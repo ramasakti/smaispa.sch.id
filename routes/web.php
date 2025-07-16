@@ -10,8 +10,12 @@ use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\UsersController;
 
 // Auth
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::middleware('guest')->group(function () {
-    Route::get('/', [AuthController::class, 'login'])->name('login');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
 });
 
